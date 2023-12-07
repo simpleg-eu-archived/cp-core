@@ -2,6 +2,8 @@
 
 #include "Error.h"
 
+using namespace cuplan::core;
+
 TEST(ErrorTest, ErrorKind_ReturnsExpectedString) {
   const std::string expected_error_kind = "errorKind";
 
