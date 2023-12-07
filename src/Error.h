@@ -2,24 +2,22 @@
 #define ERROR_H
 #include <string>
 
+namespace cuplan::core {
 class Error {
-public:
+ public:
   Error(const std::string &error_kind, const std::string &message) {
     error_kind_ = error_kind;
     message_ = message;
   }
 
-  [[nodiscard]] std::string ErrorKind() const {
-    return error_kind_;
-  }
+  [[nodiscard]] std::string ErrorKind() const { return error_kind_; }
 
-  [[nodiscard]] std::string Message() const {
-    return message_;
-  }
+  [[nodiscard]] std::string Message() const { return message_; }
 
-private:
+ private:
   std::string error_kind_;
   std::string message_;
 };
+}  // namespace cuplan::core
 
-#endif //ERROR_H
+#endif  // ERROR_H
