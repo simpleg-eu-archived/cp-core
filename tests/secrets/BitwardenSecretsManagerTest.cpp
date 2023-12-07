@@ -23,11 +23,11 @@ TEST_F(BitwardenSecretsManagerTest, Get_CorrectSecret_ReturnsExpectedSecret) {
   ASSERT_EQ(expected_value, result.Unwrap());
 }
 
-TEST_F(BitwardenSecretsManagerTest, Get_InexistingSecret_ReturnsError) {
-  const std::string inexisting_secret = "00000000-0000-0000-0000-000000000000";
+TEST_F(BitwardenSecretsManagerTest, Get_UnexistingSecret_ReturnsError) {
+  const std::string unexisting_secret = "00000000-0000-0000-0000-000000000000";
 
   const Result<std::string, Error> result =
-      secrets_manager_.Get(inexisting_secret);
+      secrets_manager_.Get(unexisting_secret);
 
   ASSERT_FALSE(result.IsOk());
   ASSERT_EQ(kCommandFailed, result.UnwrapErr().ErrorKind());
