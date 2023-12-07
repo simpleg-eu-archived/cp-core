@@ -32,6 +32,8 @@ class Result {
     return *err_;
   }
 
+  bool IsOk() const { return success_; }
+
  private:
   std::shared_ptr<TOk> ok_;
   std::shared_ptr<TError> err_;
