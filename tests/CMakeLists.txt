@@ -15,7 +15,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(cp-core-test ResultTest.cpp)
+add_executable(cp-core-test ResultTest.cpp
+        ErrorTest.cpp)
 
 target_link_libraries(cp-core-test GTest::gtest_main cp-core-impl)
 target_include_directories(cp-core-test PRIVATE ${CMAKE_SOURCE_DIR}/src)

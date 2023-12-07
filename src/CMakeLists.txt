@@ -4,6 +4,7 @@ project(cp-core-impl)
 
 add_library(cp-core-impl STATIC Result.h
         Result.cpp
-        Empty.h)
+        Empty.h
+        Error.h)
 
 set_target_properties(cp-core-impl PROPERTIES LINKER_LANGUAGE CXX)
