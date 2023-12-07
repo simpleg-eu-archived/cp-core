@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.27)
 
 project(cp-core-tests)
 
+set(CP_CORE_SECRETS_MODULE ON)
+
 include(FetchContent)
 
 # GoogleTest
@@ -15,10 +17,16 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(cp-core-test ResultTest.cpp
-        ErrorTest.cpp)
+# Secrets module
 
-target_link_libraries(cp-core-test GTest::gtest_main cp-core-impl)
+add_subdirectory(../src/secrets ./secrets_module)
+
+add_executable(cp-core-test ResultTest.cpp
+        ErrorTest.cpp
+        secrets/BitwardenSecretsManagerTest.cpp
+        secrets/BitwardenSecretsManagerTest.h)
+
+target_link_libraries(cp-core-test GTest::gtest_main cp-core-impl cp-core-secrets)
 target_include_directories(cp-core-test PRIVATE ${CMAKE_SOURCE_DIR}/src)
 
 include(GoogleTest)
